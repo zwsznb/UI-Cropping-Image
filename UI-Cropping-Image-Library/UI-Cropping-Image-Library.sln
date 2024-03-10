@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroppingImageLibrary", "CroppingImageLibrary\CroppingImageLibrary.csproj", "{AADA3516-FF2A-4C8D-AC3F-43C38ACB7BE4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CroppingImageLibrary.SampleApp", "CroppingImageLibrary.SampleApp\CroppingImageLibrary.SampleApp.csproj", "{65C9DD8D-8B24-4EC1-A2B5-88FF42F46D01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainDemo", "MainDemo\MainDemo.csproj", "{362A25BF-903D-4BC1-98FD-BDC241A8F174}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Video.Helper", "Video.Helper\Video.Helper.csproj", "{799B886E-3E80-46C9-B69A-59B053A0319E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yolo.Detect", "Yolo.Detect\Yolo.Detect.csproj", "{F7461545-C965-47D5-85F9-B1F652435453}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{65C9DD8D-8B24-4EC1-A2B5-88FF42F46D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65C9DD8D-8B24-4EC1-A2B5-88FF42F46D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65C9DD8D-8B24-4EC1-A2B5-88FF42F46D01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{362A25BF-903D-4BC1-98FD-BDC241A8F174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{362A25BF-903D-4BC1-98FD-BDC241A8F174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{362A25BF-903D-4BC1-98FD-BDC241A8F174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{362A25BF-903D-4BC1-98FD-BDC241A8F174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{799B886E-3E80-46C9-B69A-59B053A0319E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{799B886E-3E80-46C9-B69A-59B053A0319E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{799B886E-3E80-46C9-B69A-59B053A0319E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{799B886E-3E80-46C9-B69A-59B053A0319E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7461545-C965-47D5-85F9-B1F652435453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7461545-C965-47D5-85F9-B1F652435453}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7461545-C965-47D5-85F9-B1F652435453}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7461545-C965-47D5-85F9-B1F652435453}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

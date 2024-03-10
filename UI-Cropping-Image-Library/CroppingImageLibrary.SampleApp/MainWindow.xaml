@@ -5,10 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CroppingImageLibrary.SampleApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="130" Width="165" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-	<Grid>
-		<Button Content="Load Image" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="125" Click="Button_LoadImage" />
-		<Button Content="Cropping and Save" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="125" Click="Button_SaveImage" />
+        Title="MainWindow" Height="270" Width="399" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <Button Name="LoadBtn" Content="Load Image Or Video" HorizontalAlignment="Center" Margin="0,18,0,0" VerticalAlignment="Top" Width="134" Click="Button_LoadImage" />
+        <Button Name="SaveBtn" Content="Cropping and Save" HorizontalAlignment="Center" Margin="0,42,0,0" VerticalAlignment="Top" Width="134" Click="Button_SaveImage" />
+        <CheckBox Content="AutoDetect" HorizontalAlignment="Left" Margin="242,44,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <TextBox Name="LogTxt" HorizontalAlignment="Left" Margin="0,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Grid.ColumnSpan="2" Height="163"/>
 
-	</Grid>
+    </Grid>
 </Window>

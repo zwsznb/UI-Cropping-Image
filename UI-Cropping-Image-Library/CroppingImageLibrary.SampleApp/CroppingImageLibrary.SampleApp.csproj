@@ -8,12 +8,13 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>CroppingImageLibrary.SampleApp</RootNamespace>
     <AssemblyName>CroppingImageLibrary.SampleApp</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <LangVersion>8</LangVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -68,6 +69,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GlobalExceptionHandle.cs" />
     <Compile Include="CroppingWindow.xaml.cs">
       <DependentUpon>CroppingWindow.xaml</DependentUpon>
     </Compile>
@@ -106,6 +108,10 @@
     <ProjectReference Include="..\CroppingImageLibrary\CroppingImageLibrary.csproj">
       <Project>{AADA3516-FF2A-4C8D-AC3F-43C38ACB7BE4}</Project>
       <Name>CroppingImageLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Video.Helper\Video.Helper.csproj">
+      <Project>{799b886e-3e80-46c9-b69a-59b053a0319e}</Project>
+      <Name>Video.Helper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
