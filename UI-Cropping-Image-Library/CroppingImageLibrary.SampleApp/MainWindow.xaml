@@ -19,6 +19,8 @@
         <CheckBox Name="AutoDetect" Content="AutoDetect" HorizontalAlignment="Left" Margin="32,45,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1"/>
         <RichTextBox Name="LogTxt" VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="5" Margin="0,81,0,0" IsReadOnly="True">
         </RichTextBox>
+        <TextBox Name="SelectedDirPath" IsReadOnly="True" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="32,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Name="SelectPathBtn"  Grid.Column="2" Content="Select Save Path" HorizontalAlignment="Left" Margin="34,18,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="105" Click="SelectPathBtn_Click"/>
 
 
     </Grid>

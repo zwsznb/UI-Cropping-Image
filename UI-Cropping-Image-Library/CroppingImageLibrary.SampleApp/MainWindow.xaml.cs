@@ -3,6 +3,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using CroppingImageLibrary.Services;
 using Microsoft.Win32;
@@ -33,7 +34,7 @@ namespace CroppingImageLibrary.SampleApp
         {
             if (_croppingWindow != null)
                 return;
-            OpenFileDialog op = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog op = new Microsoft.Win32.OpenFileDialog();
             op.Title = "Select a picture";
             //op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" + "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" + "Portable Network Graphic (*.png)|*.png";
             if (op.ShowDialog() == true)
@@ -69,6 +70,11 @@ namespace CroppingImageLibrary.SampleApp
 
         private void Button_SaveImage(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(SelectedDirPath.Text))
+            {
+                LogTxt.WriteLogToTBox(LogLevel.ERROR, "请选择保存路径");
+                return;
+            }
             CropArea cropArea = null;
             if (!(bool)AutoDetect.IsChecked)
             {
@@ -90,12 +96,11 @@ namespace CroppingImageLibrary.SampleApp
 
         private void SaveToVideo(CropArea cropArea)
         {
-            var tmp = "W:/project/ffmpeg/ffmpeg-master-latest-win64-gpl/tmp";
             if ((bool)AutoDetect.IsChecked)
             {
                 ImageDetection imageDetection = new ImageDetection(sourcePath);
                 CropOutputSize size = imageDetection.DetectSpecificObj("person");
-                CropVideoAndSave(size, tmp);
+                CropVideoAndSave(size);
             }
             else
             {
@@ -105,15 +110,15 @@ namespace CroppingImageLibrary.SampleApp
                     OutHeight = cropArea.CroppedRectAbsolute.Height,
                     X = cropArea.CroppedRectAbsolute.X,
                     Y = cropArea.CroppedRectAbsolute.Y
-                }, tmp);
+                });
             }
             TempFileInit();
         }
 
-        private void CropVideoAndSave(CropOutputSize cropSize, string tmp)
+        private void CropVideoAndSave(CropOutputSize cropSize)
         {
             VideoEncoder encoder = new VideoEncoder(videoPath);
-            encoder.CropVideoAndEncoder($"{tmp}/{DateTime.Now.ToString("yyMMddHHmmss")}.mp4",
+            encoder.CropVideoAndEncoder($"{SelectedDirPath.Text}/{DateTime.Now.ToString("yyMMddHHmmss")}.mp4",
                 new CropOutputSize
                 {
                     OutWidth = cropSize.OutWidth,
@@ -139,7 +144,7 @@ namespace CroppingImageLibrary.SampleApp
             }
 
             //save image to file
-            SaveFileDialog dlg = new SaveFileDialog
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog
             {
                 FileName = "TestCropping",          // Default file name
                 DefaultExt = ".png",                  // Default file extension
@@ -174,6 +179,21 @@ namespace CroppingImageLibrary.SampleApp
                 videoPath = null;
                 sourcePath = null;
             }
+        }
+
+        private void SelectPathBtn_Click(object sender, RoutedEventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+
+                if (result == System.Windows.Forms.DialogResult.OK &&
+                    !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    SelectedDirPath.Text = fbd.SelectedPath;
+                }
+            }
+
         }
     }
 }
