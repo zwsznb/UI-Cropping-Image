@@ -51,11 +51,13 @@ namespace CroppingImageLibrary.SampleApp
                     sourceBitmap = new Bitmap(sourcePath);
                     isVideo = true;
                 }
+                var image = System.Drawing.Image.FromFile(sourcePath);
+                LogTxt.WriteLogToTBox(LogLevel.INFO, $"选中图片:{sourcePath},宽:{image.Width},高:{image.Height}");
                 _croppingWindow = new CroppingWindow(new BitmapImage(new Uri(sourcePath)));
                 _croppingWindow.Closed += (a, b) => _croppingWindow = null;
                 _croppingWindow.Height = new BitmapImage(new Uri(sourcePath)).Height;
                 _croppingWindow.Width = new BitmapImage(new Uri(sourcePath)).Width;
-
+                LogTxt.WriteLogToTBox(LogLevel.INFO, $"窗口图片的宽:{_croppingWindow.Width},高:{_croppingWindow.Height}");
                 _croppingWindow.Show();
             }
         }
@@ -63,7 +65,9 @@ namespace CroppingImageLibrary.SampleApp
         private void Button_SaveImage(object sender, RoutedEventArgs e)
         {
             var cropArea = _croppingWindow.CropTool.CropService.GetCroppedArea();
-            LogTxt.WriteLogToTBox(LogLevel.INFO, "保存中...");
+            LogTxt.WriteLogToTBox(LogLevel.INFO, $"选中区域:width:{cropArea.CroppedRectAbsolute.Width}," +
+                $"height:{cropArea.CroppedRectAbsolute.Height},x:{cropArea.CroppedRectAbsolute.X}," +
+                $"y:{cropArea.CroppedRectAbsolute.Y}");
             if (!isVideo)
                 SaveToImage(cropArea);
             else
@@ -73,8 +77,6 @@ namespace CroppingImageLibrary.SampleApp
             LogTxt.WriteLogToTBox(LogLevel.INFO, "保存成功");
             //close croppingWindow
             _croppingWindow.Close();
-            TempFileInit();
-
         }
 
         private void SaveToVideo(CropArea cropArea)
@@ -89,6 +91,7 @@ namespace CroppingImageLibrary.SampleApp
                     X = cropArea.CroppedRectAbsolute.X,
                     Y = cropArea.CroppedRectAbsolute.Y
                 });
+            TempFileInit();
         }
 
         private void SaveToImage(CropArea cropArea)
@@ -130,16 +133,16 @@ namespace CroppingImageLibrary.SampleApp
         {
             try
             {
-
-                File.Delete(videoPath);
+                File.Delete(sourcePath);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("删除文件失败");
+                LogTxt.WriteLogToTBox(LogLevel.ERROR, ex.Message);
             }
             finally
             {
                 videoPath = null;
+                sourcePath = null;
             }
         }
     }

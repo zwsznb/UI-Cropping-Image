@@ -5,16 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CroppingImageLibrary.SampleApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="270" Width="399" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="425" Width="610" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="23*"/>
-            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="134*"/>
+            <ColumnDefinition Width="77*"/>
+            <ColumnDefinition Width="67*"/>
+            <ColumnDefinition Width="24*"/>
+            <ColumnDefinition Width="97*"/>
         </Grid.ColumnDefinitions>
-        <Button Name="LoadBtn" Content="Load Image Or Video" HorizontalAlignment="Center" Margin="0,18,0,0" VerticalAlignment="Top" Width="134" Click="Button_LoadImage" />
-        <Button Name="SaveBtn" Content="Cropping and Save" HorizontalAlignment="Center" Margin="0,42,0,0" VerticalAlignment="Top" Width="134" Click="Button_SaveImage" />
-        <CheckBox Content="AutoDetect" HorizontalAlignment="Left" Margin="242,44,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <TextBox Name="LogTxt" HorizontalAlignment="Left" Margin="0,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="399" Grid.ColumnSpan="2" Height="163"/>
+        <Button Name="LoadBtn" Content="Load Image Or Video" HorizontalAlignment="Left" Margin="72,18,0,0" VerticalAlignment="Top" Width="134" Click="Button_LoadImage" Grid.ColumnSpan="2" />
+        <Button Name="SaveBtn" Content="Cropping and Save" HorizontalAlignment="Left" Margin="72,42,0,0" VerticalAlignment="Top" Width="134" Click="Button_SaveImage" Grid.ColumnSpan="2" />
+        <CheckBox Name="AutoDetect" Content="AutoDetect" HorizontalAlignment="Left" Margin="32,45,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1"/>
+        <RichTextBox Name="LogTxt" VerticalScrollBarVisibility="Visible" Grid.ColumnSpan="5" Margin="0,81,0,0" IsReadOnly="True">
+        </RichTextBox>
+
 
     </Grid>
 </Window>
