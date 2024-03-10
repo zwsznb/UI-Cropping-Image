@@ -21,7 +21,7 @@ namespace Yolo.Detect
             CropOutputSize cropOutputSize = null;
             using (var image = Image.FromFile(path))
             {
-                using (var scorer = new YoloScorer<YoloCocoP5Model>("yolov5n.onnx"))
+                using (var scorer = new YoloScorer<YoloCocoP5Model>($"{AppContext.BaseDirectory}/yolov5n.onnx"))
                 {
                     var predictions = scorer.Predict(image);
 
